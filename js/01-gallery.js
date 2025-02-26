@@ -41,8 +41,6 @@ function onGalleryItemClick(event) {
       .classList
       .add('is-open');
 
-  // 4. Підміна значення атрибута src елемента img.lightbox__image.
-
   refs.modalImgEl.src = event.target.dataset.source;
   refs.modalImgEl.alt = event
       .target
