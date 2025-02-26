@@ -26,14 +26,10 @@ function createGalleryMarkup(galleryItems) {
       .join('');
 }
 
-// 2.Реалізація делегування на ul.gallery і отримання url великого зображення
 
 function onGalleryItemClick(event) {
-  // коли клікаємо на img, відмінюємо по замовчуванню перезавантаження сторінки прівент
-  // діє лише на подію(event/e)
   event.preventDefault();
 
-  // 3. Відкриття модального вікна по кліці на елементі галереї.
 
   const isGalleryEl = event
       .target
@@ -47,8 +43,6 @@ function onGalleryItemClick(event) {
       .classList
       .add('is-open');
 
-  // 4. Підміна значення атрибута src елемента img.lightbox__image.
-
   refs.modalImgEl.src = event.target.dataset.source;
   refs.modalImgEl.alt = event
       .target
@@ -59,8 +53,6 @@ function onGalleryItemClick(event) {
 
 }
 
-// 5. Закриття модального вікна по кліці  на кнопку 
-// button[data-action="close-lightbox"]
 
 function closeModal() {
   refs
@@ -68,7 +60,6 @@ function closeModal() {
       .classList
       .remove('is-open');
 
-  // 6. Очищення значення атрибута src елемента img.lightbox__image.
   refs.modalImgEl.src = '';
   refs.modalImgEl.alt = '';
 
