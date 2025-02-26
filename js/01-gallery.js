@@ -41,6 +41,8 @@ function onGalleryItemClick(event) {
       .classList
       .add('is-open');
 
+  // 4. Підміна значення атрибута src елемента img.lightbox__image.
+
   refs.modalImgEl.src = event.target.dataset.source;
   refs.modalImgEl.alt = event
       .target
@@ -50,6 +52,8 @@ function onGalleryItemClick(event) {
   document.addEventListener('keydown', onArrowPress);
 
 }
+
+
 function closeModal() {
   refs
       .modalContainerEl
@@ -67,7 +71,7 @@ refs.lightboxOverlayEl.addEventListener('click', closeModal);
 
 function onEscPress(event) {
   if (event.key === 'Escape') {
-    closeModal();
+      closeModal();
   }
 }
 refs.lightboxOverlayEl.addEventListener('click', closeModal);
