@@ -16,33 +16,49 @@ refs.lightboxOverlayEl.addEventListener('click', closeModal); // 7.
 
 function createGalleryMarkup(galleryItems) {
   return galleryItems
-    .map(({ preview, original, description }) => {
-      return `<li class="gallery__item">
-                    <a class="gallery__link" href="${original}">
-                        <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}"/>
-                    </a>
-                </li>`;
-    })
-    .join('');
+      .map(({preview, original, description}) => {
+          return `<li class="gallery__item">
+                  <a class="gallery__link" href="${original}">
+                      <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}"/>
+                  </a>
+              </li>`;
+      })
+      .join('');
 }
 
 function onGalleryItemClick(event) {
   event.preventDefault();
-  const isGalleryEl = event.target.classList.contains('gallery__image');
+
+  const isGalleryEl = event
+      .target
+      .classList
+      .contains('gallery__image');
   if (!isGalleryEl) {
-    return;
+      return;
   }
-  refs.modalContainerEl.classList.add('is-open');
+  refs
+      .modalContainerEl
+      .classList
+      .add('is-open');
+
   refs.modalImgEl.src = event.target.dataset.source;
-  refs.modalImgEl.alt = event.target.getAttribute('alt');
+  refs.modalImgEl.alt = event
+      .target
+      .getAttribute('alt');
 
   document.addEventListener('keydown', onEscPress);
   document.addEventListener('keydown', onArrowPress);
+
 }
 function closeModal() {
-  refs.modalContainerEl.classList.remove('is-open');
+  refs
+      .modalContainerEl
+      .classList
+      .remove('is-open');
+
   refs.modalImgEl.src = '';
   refs.modalImgEl.alt = '';
+
   document.removeEventListener('keydown', onEscPress);
   document.removeEventListener('keydown', onArrowPress);
 }
