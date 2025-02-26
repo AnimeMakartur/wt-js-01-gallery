@@ -1,13 +1,11 @@
 import { galleryItems } from './gallery-items.js';
 
-// це gallery DOM element
-const galleryContainer = document.querySelector(".gallery");
+const galleryContainer = document.querySelector('.gallery');
 
-// створення (відтворення) картки 
 function createElementMarkup(markup) {
-   return markup.map(({ description, preview, original }) => {
-    
-    return `
+  return markup
+    .map(({ description, preview, original }) => {
+      return `
     <li class="gallery__item">
     <a class="gallery__link" href="${original}">
         <img
@@ -19,16 +17,18 @@ function createElementMarkup(markup) {
     </a>
 </li>
 `;
-}).join("")}
+    })
+    .join('');
+}
 
-galleryContainer.insertAdjacentHTML("beforeend",
-    createElementMarkup(galleryItems));
-
- new SimpleLightbox('.gallery a',
-    {
-    captionDelay: 250,
-    captionsData: "alt",
-    }
+galleryContainer.insertAdjacentHTML(
+  'beforeend',
+  createElementMarkup(galleryItems),
 );
+
+new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
 
 console.log(galleryItems);
